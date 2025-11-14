@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import '../cubit/counter_cubit.dart';
-import 'counter_view.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../delegate/counter.dart';
 
-/// {@template counter_page}
-/// A [StatelessWidget] which is responsible for providing a
-/// [CounterCubit] instance to the [CounterView].
-/// {@endtemplate}
-class CounterPage extends StatelessWidget {
-  /// {@macro counter_page}
-  const CounterPage({super.key});
-
+class Home extends ConsumerWidget {
   @override
-  Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => CounterCubit(),
-      child: const CounterView(),
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Counter example')),
+      body: Center(
+        child: Text('${ref.watch(counterProvider)}'),
+      ),
+      floatingActionButton: FloatingActionButton(
+        // The read method is a utility to read a provider without listening to it
+        onPressed: () => ref.read(counterProvider.notifier).increment(),
+        child: const Icon(Icons.add),
+      ),
     );
   }
 }
