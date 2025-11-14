@@ -1,7 +1,11 @@
+import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:learn_9_pract/app.dart';
+import 'package:learn_9_pract/counter_observer.dart';
 
 void main() {
-  runApp(const MyApp());
+  Bloc.observer = const CounterObserver();
+  runApp(const CounterApp());
 }
 
 class MyApp extends StatelessWidget {
