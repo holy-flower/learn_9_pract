@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'MobX Counter',
+      title: 'MobX',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -48,22 +48,10 @@ class MyHomePage extends StatelessWidget {
           ],
         ),
       ),
-      floatingActionButton: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: <Widget>[
-          FloatingActionButton(
-            onPressed: counter.increment,
-            tooltip: 'Increment',
-            child: const Icon(Icons.add),
-          ),
-          const SizedBox(height: 10),
-          FloatingActionButton(
-            onPressed: counter.decrement,
-            tooltip: 'Decrement',
-            child: const Icon(Icons.remove),
-          ),
-        ],
+      floatingActionButton: FloatingActionButton(
+        onPressed: counter.increment,
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
       ),
     );
   }
